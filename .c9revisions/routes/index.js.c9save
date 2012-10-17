@@ -1,0 +1,1 @@
+{"ts":1347676896980,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"\n/*\n * GET home page.\n */\nvar menu = [{name: '1'},{name: '2'}];\nexports.index = function(req, res){\n  res.render('index.html', { /*layout: false,*/ title: 'Express', menu: menu })\n};"]],"start1":0,"start2":0,"length1":0,"length2":182}]],"length":182}

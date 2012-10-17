@@ -1,0 +1,1 @@
+{"ts":1347676896979,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<title>My Page</title>\r\n</head>\r\n<body>\r\n<ul>\r\n{{#menu}}\r\n    <li>{{name}}</li>\r\n{{/menu}}\r\n</ul>\r\n{{{body}}}\r\n</body>\r\n</html>"]],"start1":0,"start2":0,"length1":0,"length2":160}]],"length":160}

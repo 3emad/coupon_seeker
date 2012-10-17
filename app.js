@@ -6,23 +6,27 @@
 var express = require('express')
   , routes = require('./routes')
   , hogan = require('hogan.js')
-  , cons = require('consolidate');
+  , cons = require('consolidate')
+  , io = require('socket.io').listen(app)
+  , geohash = require('geohash');
 
 var app = module.exports = express.createServer();
 
-// Configuration
-
-app.configure(function(){
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'hogan');
-    app.register('html', {
+var hoganTmpl = {
         compile: function() {
             var t = hogan.compile.apply(hogan, arguments);
             return function() {
                 return t.render.apply(t, arguments);
             }
         }
-    });
+    };
+
+// Configuration
+
+app.configure(function(){
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'hogan');
+    app.register('html', hoganTmpl);
     //app.set('view options',{layout:false});
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -43,7 +47,10 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+app.get('/login', routes.login);
 
 app.listen(8080, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+//var sio = io.listen(app);
